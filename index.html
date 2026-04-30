@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="统一宇宙力学演化理论：一个完整、自洽的基础物理框架，统一经典力学、相对论与量子力学，涵盖质量、能量、力、暗物质、暗能量、量子测量等核心问题。">
-    <meta name="keywords" content="统一宇宙力学演化理论, Unified Cosmic Mechanics Evolution Theory, 物理框架, 量子力学, 相对论, 暗物质, 暗能量, 引力, 波粒二象性">
-    <meta name="author" content="UCMET 作者">
-    <title>统一宇宙力学演化理论 | 完整基础物理框架</title>
+    <meta name="description" content="Unified Cosmic Mechanics Evolution Theory: A complete, self-consistent foundational framework for physics, unifying classical mechanics, relativity, and quantum mechanics. Addressing mass-energy, dark matter, dark energy, wave-particle duality, and more.">
+    <meta name="keywords" content="Unified Cosmic Mechanics Evolution Theory, UCMET, quantum gravity, dark matter, dark energy, Hubble tension, quantum measurement, wave-particle duality, foundational physics">
+    <meta name="author" content="UCMET Author">
+    <title>Unified Cosmic Mechanics Evolution Theory | Complete Foundational Physics Framework</title>
     <style>
         * {
             margin: 0;
@@ -22,14 +22,12 @@
             scroll-behavior: smooth;
         }
 
-        /* 容器 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* 头部 */
         .hero {
             background: linear-gradient(135deg, #0b2b3b 0%, #123e4f 100%);
             color: white;
@@ -72,7 +70,6 @@
             margin-bottom: 1rem;
         }
 
-        /* 章节卡片 */
         .card {
             background: white;
             border-radius: 1.5rem;
@@ -113,7 +110,7 @@
         }
         .paper-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 0.9rem;
             margin-top: 1.2rem;
         }
@@ -125,9 +122,21 @@
             border: 1px solid #e2e8f0;
             transition: all 0.2s;
         }
+        .paper-item a {
+            text-decoration: none;
+            color: #1e4a6b;
+            font-weight: 500;
+            display: inline-block;
+            width: 100%;
+        }
+        .paper-item a:hover {
+            text-decoration: underline;
+            color: #0f3b56;
+        }
         .paper-item strong {
             color: #155f7c;
             font-weight: 700;
+            margin-right: 0.3rem;
         }
         .paper-item:hover {
             background: #eef3fa;
@@ -148,19 +157,9 @@
             font-size: 0.85rem;
             color: #4a627a;
         }
-        .btn-doi {
-            background-color: #1e4a6b;
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: inline-block;
-            transition: background 0.2s;
-        }
-        .btn-doi:hover {
-            background-color: #0f3b56;
+        .declaration {
+            background: #fff6e5;
+            border-left: 4px solid #e6a017;
         }
         @media (max-width: 700px) {
             .container {
@@ -179,141 +178,159 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
         }
-        .declaration {
-            background: #fff6e5;
-            border-left: 4px solid #e6a017;
+        .topic-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.8rem;
+        }
+        .topic-tag {
+            background: #e9ecef;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- 头部 Hero -->
+    <!-- Hero Section -->
     <div class="hero">
-        <div class="badge">📡 完整自洽 · 第一原理重建</div>
+        <div class="badge">📡 Self-Consistent · First-Principles Reconstruction</div>
         <h1>
-            统一宇宙力学演化理论
-            <small>Unified Cosmic Mechanics Evolution Theory</small>
+            Unified Cosmic Mechanics Evolution Theory
+            <small>Complete Foundational Framework for Physics</small>
         </h1>
         <p style="font-size:1.2rem; max-width:800px; margin:0 auto">
-            一个完整、自洽的基础物理框架——逻辑自洽 + 数学形式化 + 与所有实验及自然观测一致
+            Logical self-consistency · Mathematical formalization · Consistency with all experiments and natural phenomena
         </p>
         <div class="sub">
-            经典力学 · 相对论 · 量子力学 —— 完全兼容与重构
+            Classical Mechanics · Relativity · Quantum Mechanics — Fully Reconciled & Reconstructed
         </div>
     </div>
 
-    <!-- 简介与核心主张 -->
+    <!-- Overview -->
     <div class="card">
-        <h2>⚛️ 理论概述</h2>
-        <p><strong>统一宇宙力学演化理论</strong> 从第一原理出发系统重建物理学基础，实现经典力学、相对论与量子力学的自然兼容。本框架提供了质量、能量、力、动量的规范化起源，并彻底解决波粒二象性、引力起源、暗物质、暗能量、哈勃张力、量子测量问题等核心基础难题。</p>
-        <p>全部内容均包含完整的数学验证、数值模拟验证以及观测一致性检验。从微观物质的状态表征，到宏观物质、生命、智能乃至天体的演化，提供统一的机制和完备的基础逻辑与推导依据。</p>
+        <h2>⚛️ Theoretical Overview</h2>
+        <p>The <strong>Unified Cosmic Mechanics Evolution Theory (UCMET)</strong> systematically reconstructs the foundations of physics from first principles, achieving natural compatibility with conventional theories across all scales. The framework provides the normalized origins of mass, energy, force, and momentum, and resolves long-standing foundational issues: wave-particle duality, origin of gravity, dark matter, dark energy, the Hubble tension, and the quantum measurement problem.</p>
+        <p>All components include complete mathematical verification, numerical simulation validation, and observational consistency checks. From microscopic state representations to macroscopic matter, life, intelligence, and celestial bodies — a unified mechanism and complete foundational logic are provided.</p>
         <div class="highlight">
-            📌 <strong>关键成就</strong>：重构因果相互作用演化，重新定义时空动力学，基于“动量拓扑编码确定性量子理论”及“网状引力模型”等系统性工作，解决长期存在的物理基础裂缝。
+            📌 <strong>Key Achievements</strong>: Reconstructed causal interaction evolution, dynamical spacetime, “Momentum Topological Coding Deterministic Quantum Theory”, and the “Reticulate Gravity Model” — a systematic resolution of foundational physical inconsistencies.
         </div>
     </div>
 
-    <!-- 重要声明: 学术沉默 & 中国平台 -->
+    <!-- Academic Declaration (silencing & China platforms) -->
     <div class="card declaration">
-        <h2>📢 重要学术声明</h2>
-        <p>本工作曾在 GitHub、OSF、Zenodo、Preprints.org 等国际平台遭遇学术审查沉默。因此，所有正式出版物与验证目前均托管于中国官方学术平台，并持续推进。本理论框架坚持开放获取，以完整、透明的形式面向全球学术界。</p>
-        <p><strong>所有论文、推导逻辑、数值模拟均已正式归档并公开发布，任何违反<em> CC BY-SA 4.0 许可</em>的行为将被记录并承担学术责任。</strong></p>
+        <h2>📢 Important Academic Declaration</h2>
+        <p>This work encountered silent academic censorship on GitHub, OSF, Zenodo, Preprints.org, and other international platforms. Therefore, all formal publications and validations are now hosted and progressing on Chinese official academic platforms, ensuring open access and transparent scholarly communication. The full theoretical framework, derivations, and numerical simulations are formally archived and publicly released.</p>
+        <p><strong>Any violation of the <em>CC BY-SA 4.0 License</em> will be recorded and held accountable in academic and public records.</strong></p>
     </div>
 
-    <!-- 23篇论文 完整系列 -->
+    <!-- Full 23-Paper Series with PDF Links -->
     <div class="card">
-        <h2>📄 完整23篇论文系列</h2>
-        <p>以下为《统一宇宙力学演化理论》系列论文，覆盖从信息动力学、宇宙资源、时空重构，到单粒子相对论效应、量子纠缠、星系共演化及无延迟引力数值模拟等全部内容。</p>
+        <h2>📄 Full 23-Paper Series</h2>
+        <p>The complete series of "Unified Cosmic Mechanics Evolution Theory" covering information dynamics, cosmic resources, spacetime reconstruction, relativistic single-particle effects, quantum entanglement, galaxy co-evolution, and converged no-delay gravity simulations. Click on any title to open the PDF.</p>
         <div class="paper-list">
-            <div class="paper-item"><strong>I.</strong> 信息动力学演化系统</div>
-            <div class="paper-item"><strong>II.</strong> 宇宙演化资源</div>
-            <div class="paper-item"><strong>III.</strong> 宇宙演化规则</div>
-            <div class="paper-item"><strong>IV.</strong> 宇宙力更新机制的必要性与时间起源</div>
-            <div class="paper-item"><strong>V.</strong> 基础物理维度动态关系重构</div>
-            <div class="paper-item"><strong>VI.</strong> 相对论、经典力学与量子力学的关系</div>
-            <div class="paper-item"><strong>VII.</strong> 演化时空</div>
-            <div class="paper-item"><strong>VIII.</strong> 单粒子高速动力学效应及其与相对论的关系</div>
-            <div class="paper-item"><strong>IX.</strong> 基于相对论动力学的磁性起源重构</div>
-            <div class="paper-item"><strong>X.</strong> 基于相对论效应的水星近日点进动与引力波动力学重建</div>
-            <div class="paper-item"><strong>XI.</strong> 场与粒子 —— 动量拓扑编码确定性量子理论</div>
-            <div class="paper-item"><strong>XII.</strong> 粒子封装速度增量方程的动力学兼容性验证</div>
-            <div class="paper-item"><strong>XIII.</strong> 力的本质</div>
-            <div class="paper-item"><strong>XIV.</strong> 粒子速度饱和动力学效应</div>
-            <div class="paper-item"><strong>XV.</strong> 光子与电子因果相互作用态演化的对应关系</div>
-            <div class="paper-item"><strong>XVI.</strong> 电子动力学半径公式的推导与验证</div>
-            <div class="paper-item"><strong>XVII.</strong> 量子纠缠 —— 单粒子协同演化与三层角动量守恒</div>
-            <div class="paper-item"><strong>XVIII.</strong> 电荷与质量的间接关系</div>
-            <div class="paper-item"><strong>XIX.</strong> 多缝实验中的动量流分布积分原理</div>
-            <div class="paper-item"><strong>XX.</strong> 动量拓扑编码 —— 粒子态演化方程的推导</div>
-            <div class="paper-item"><strong>XXI.</strong> 大尺度星系共演化 —— 动量偏差卸载与网状引力模型</div>
-            <div class="paper-item"><strong>XXII.</strong> 宇宙自由稳态二元博弈演化 —— 自然演化与非自然演化</div>
-            <div class="paper-item"><strong>XXIII.</strong> 无延迟引力相互作用数值模拟 & 网状引力动力学 (收敛并验证)</div>
+            <div class="paper-item"><strong>I.</strong> <a href="01.pdf" target="_blank">Information Dynamics Evolution System</a></div>
+            <div class="paper-item"><strong>II.</strong> <a href="02.pdf" target="_blank">Cosmic Evolutionary Resources</a></div>
+            <div class="paper-item"><strong>III.</strong> <a href="03.pdf" target="_blank">Cosmic Evolution Rules</a></div>
+            <div class="paper-item"><strong>IV.</strong> <a href="04.pdf" target="_blank">Necessity of the Cosmic Force Update Mechanism and the Origin of Time</a></div>
+            <div class="paper-item"><strong>V.</strong> <a href="05.pdf" target="_blank">Reconstruction of Dynamic Relationships of Basic Physical Dimensions</a></div>
+            <div class="paper-item"><strong>VI.</strong> <a href="06.pdf" target="_blank">The Relationship Between Relativity, Classical Mechanics, and Quantum Mechanics</a></div>
+            <div class="paper-item"><strong>VII.</strong> <a href="07.pdf" target="_blank">Evolutionary Spacetime</a></div>
+            <div class="paper-item"><strong>VIII.</strong> <a href="08.pdf" target="_blank">Single-Particle High-Speed Dynamical Effects and Their Relationship with Relativity</a></div>
+            <div class="paper-item"><strong>IX.</strong> <a href="09.pdf" target="_blank">Reconstruction of the Origin of Magnetism Based on Relativistic Dynamics</a></div>
+            <div class="paper-item"><strong>X.</strong> <a href="10.pdf" target="_blank">Dynamic Reconstruction of Mercury's Perihelion Precession and Gravitational Waves Based on Relativistic Effects</a></div>
+            <div class="paper-item"><strong>XI.</strong> <a href="11.pdf" target="_blank">Field and Particle — Momentum Topological Coding Deterministic Quantum Theory</a></div>
+            <div class="paper-item"><strong>XII.</strong> <a href="12.pdf" target="_blank">Dynamic Compatibility Verification of the Particle Encapsulation Velocity Increase Equation</a></div>
+            <div class="paper-item"><strong>XIII.</strong> <a href="13.pdf" target="_blank">The Nature of Force</a></div>
+            <div class="paper-item"><strong>XIV.</strong> <a href="14.pdf" target="_blank">Particle Velocity Saturation Dynamical Effect</a></div>
+            <div class="paper-item"><strong>XV.</strong> <a href="15.pdf" target="_blank">Corresponding Relationship of Causal Interaction State Evolution between Photons and Electrons</a></div>
+            <div class="paper-item"><strong>XVI.</strong> <a href="16.pdf" target="_blank">Derivation and Verification of the Electron Dynamic Radius Formula</a></div>
+            <div class="paper-item"><strong>XVII.</strong> <a href="17.pdf" target="_blank">Quantum Entanglement — Single-Particle Coordinated Evolution and Three-Layer Angular Momentum Conservation</a></div>
+            <div class="paper-item"><strong>XVIII.</strong> <a href="18.pdf" target="_blank">Indirect Relationship Between Charge and Mass</a></div>
+            <div class="paper-item"><strong>XIX.</strong> <a href="19.pdf" target="_blank">Principle of Momentum Flow Distribution Integral in Multi-Slit Experiments</a></div>
+            <div class="paper-item"><strong>XX.</strong> <a href="20.pdf" target="_blank">Momentum Topological Coding — Derivation of Particle State Evolution Equations</a></div>
+            <div class="paper-item"><strong>XXI.</strong> <a href="21.pdf" target="_blank">Large-Scale Galaxy Co-Evolution — Momentum Deviation Unloading and Reticulate Gravitational Model</a></div>
+            <div class="paper-item"><strong>XXII.</strong> <a href="22.pdf" target="_blank">Cosmic Free-Steady-State Binary Game Evolution — Natural Evolution vs. Unnatural Evolution</a></div>
+            <div class="paper-item"><strong>XXIII.</strong> <a href="23.pdf" target="_blank">Numerical Simulation of No-Delay Gravitational Interaction & Reticulate Gravity Dynamics (CONVERGED & VERIFIED)</a></div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #2c5282;">✅ 每篇论文均兼容完整数学推导、模拟验证及观测校验，构成自洽体系。</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #2c5282;">✅ Each paper includes complete mathematical derivations, simulation validations, and observational consistency checks — a fully self-consistent system.</p>
     </div>
 
-    <!-- 解决的核心问题 -->
+    <!-- Core Solved Problems -->
     <div class="card">
-        <h2>🔭 解决的核心基础问题</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem;">
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">质量/能量/力/动量的规范化起源</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">波粒二象性</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">引力起源</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">暗物质问题</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">暗能量问题</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">哈勃张力</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">量子测量问题</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">量子纠缠与定域性</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">水星近日点进动重建</span>
-            <span style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px;">无延迟引力与网状动力学</span>
+        <h2>🔭 Core Foundational Problems Solved</h2>
+        <div class="topic-cloud">
+            <span class="topic-tag">Normalized origins of mass/energy/force/momentum</span>
+            <span class="topic-tag">Wave-particle duality</span>
+            <span class="topic-tag">Origin of gravity</span>
+            <span class="topic-tag">Dark matter</span>
+            <span class="topic-tag">Dark energy</span>
+            <span class="topic-tag">Hubble tension</span>
+            <span class="topic-tag">Quantum measurement problem</span>
+            <span class="topic-tag">Quantum entanglement & locality</span>
+            <span class="topic-tag">Mercury perihelion precession reconstruction</span>
+            <span class="topic-tag">No-delay gravity & reticulate dynamics</span>
         </div>
-        <p class="highlight" style="margin-top: 1.2rem;">🎯 逻辑自洽 · 数学形式化 · 全实验一致性 —— 从微观粒子到星系团尺度统一的因果演化机制。</p>
+        <p class="highlight" style="margin-top: 1.2rem;">🎯 Logical self-consistency · Mathematical formalization · Full experimental agreement — a unified causal evolutionary mechanism from microscopic particles to galactic clusters.</p>
     </div>
 
-    <!-- 开源许可 & 版权声明  (CC BY-SA 4.0)-->
+    <!-- License & Copyright (CC BY-SA 4.0) -->
     <div class="card">
-        <h2>📜 许可与版权声明</h2>
+        <h2>📜 License & Copyright Statement</h2>
         <div class="license-box">
-            <p>📌 本作品采用 <strong>Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</strong> 许可协议。</p>
-            <p><strong>署名 (Attribution)</strong>：任何使用、复制或分发本框架、论文、公式、理论逻辑及内容时，必须保留原始作者署名和来源链接。<br>
-            <strong>相同方式共享 (ShareAlike)</strong>：任何基于本理论的衍生作品、改编、重构或二次研究，必须采用相同的 CC BY-SA 4.0 许可发布。<br>
-            <strong>禁止未经授权盗用</strong>：严禁抄袭、部分复制、理论更名、隐藏引用或以独立原创提交而不明确引用。<br>
-            <strong>禁止商业滥用</strong>：未经授权进行商业许可、付费转载或对任何核心理论内容申请专利。</p>
-            <p style="margin-top:0.5rem; font-size:0.85rem;">⚖️ 所有理论框架、逻辑链、数学推导、物理模型及论文系列已正式存档并公开发布。任何违反本许可的行为将被记录并在学术及公共记录中追责。</p>
+            <p>📌 This work is licensed under the <strong>Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</strong> License.</p>
+            <p><strong>Attribution</strong>: Any use, reproduction, or distribution of this framework, papers, formulas, theoretical logic, and content must retain the original author attribution and source link.<br>
+            <strong>ShareAlike</strong>: Any derivative work, adaptation, reconstruction or secondary research based on this theory must be distributed under the same CC BY-SA 4.0 license.<br>
+            <strong>No Unauthorized Misappropriation</strong>: Strictly prohibited from unauthorized plagiarism, partial copying, theory rebranding, concealed quotation, or submitting as independent original work without explicit citation.<br>
+            <strong>No Commercial Misuse</strong>: Unauthorized commercial licensing, paid reprinting, or patent application of any core theoretical content is not permitted.</p>
+            <p style="margin-top:0.5rem; font-size:0.85rem;">⚖️ All theoretical frameworks, logical chains, mathematical derivations, physical models and paper series are formally archived and publicly released. Any violation will be recorded and held accountable in academic and public records.</p>
         </div>
-        <p style="margin-top: 1rem; font-size:0.9rem;">📑 所有系列论文完整版权归原作者/团队所有，遵循开放科学精神，欢迎在遵守许可条件下引用与扩展。</p>
     </div>
 
-    <!-- 验证与兼容特点 -->
-    <div class="card">
-        <h2>🧪 完备性验证</h2>
-        <p>本理论通过完整的数学形式化、数值仿真验证及与实验/观测的一致性检查，包括但不限于：粒子高速动力学仿真、多缝实验动量流分布积分、无延迟引力相互作用的收敛数值模拟、星系大尺度网状引力模型验证、电子动力学半径公式推导与实验对比等。每个部分均自洽闭合，并与已知物理学实验及天文观测结果高度一致（涵盖从微观量子到宇宙学尺度）。</p>
-        <p>通过重建“动量拓扑编码确定性量子理论”和“演化时空”，彻底消解了哥本哈根诠释中的测量困难，赋予量子力学确定的局域演化基础。同时网状引力模型自然地解释了暗物质与暗能量的动力学起源，无需引入额外奇异组分。</p>
+    <!-- Archive Declaration -->
+    <div class="card declaration">
+        <h2>📌 Academic Archiving & Rights Declaration</h2>
+        <p><strong>This work has been academically certified through the following means:</strong></p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>✅ Copyright registration of the People's Republic of China (Registration No.: [Please fill in your number])</li>
+            <li>✅ Permanent archiving on GitHub (Repository creation date: April 2026, immutable commit history)</li>
+            <li>✅ This website and all PDF files are publicly licensed under <strong>CC BY-SA 4.0</strong> International License</li>
+        </ul>
+        <p><strong>Legal Effect Statement</strong>: The above archiving methods can serve as preliminary evidence of copyright ownership in judicial practice of the People's Republic of China. Any plagiarism, misappropriation or unauthorized republication will be pursued according to law.</p>
     </div>
 
-    <!-- 声明及存档托管信息 符合中国平台发布 -->
+    <!-- Rigorous Verification & Compatibility -->
     <div class="card">
-        <h2>🌐 正式发布与存档</h2>
-        <p>由于早期国际平台遭遇沉默审查，本工作系列论文、完整推导手稿、数值代码及验证材料目前均在中国官方学术平台进行正式出版和托管。所有研究成果都可经由指定存储库与学术数据库获取，以确保长期可用性与透明性。</p>
-        <p>🔗 官方持续更新地址: <span style="background:#ebf4ff; padding:0.2rem 0.5rem; border-radius: 12px; font-family: monospace;">统一宇宙力学演化理论 · 中国学术平台存档 (开放获取)</span>  — 本页面作为永久学术主页，与官方存储库保持同步。</p>
-        <p>任何希望获取论文PDF、补充材料或合作验证的学者，欢迎依照CC许可条款联系主要作者进行学术交流。</p>
+        <h2>🧪 Verification & Completeness</h2>
+        <p>The theory undergoes rigorous mathematical formalization, numerical simulations, and consistency checks with experiments/observations, including: high-speed particle dynamics simulations, momentum flow distribution integrals in multi-slit experiments, converged numerical simulations of no-delay gravitational interactions, large-scale reticulate gravity models for galactic dynamics, electron dynamical radius derivation and empirical matching. Every component closes consistently and aligns with established physics and astrophysical observations across all scales.</p>
+        <p>By reconstructing "Momentum Topological Coding Deterministic Quantum Theory" and "Evolutionary Spacetime", the measurement problem of quantum mechanics is resolved, granting quantum mechanics a deterministic local-evolution basis. Meanwhile, the reticulate gravity model naturally explains the dynamical origins of dark matter and dark energy without exotic components.</p>
     </div>
 
-    <!-- 引用与致谢 -->
+    <!-- Official Archiving & Chinese Platforms -->
     <div class="card">
-        <h2>📖 如何引用</h2>
+        <h2>🌐 Official Publication & Archiving</h2>
+        <p>Due to silent censorship on early international platforms, the complete paper series, derivations, numerical codes, and validation materials are now officially published and archived on Chinese academic platforms. All results are accessible through institutional repositories and academic databases to ensure long-term availability and transparency.</p>
+        <p>🔗 <strong>Permanent access portal</strong>: <span style="background:#ebf4ff; padding:0.2rem 0.5rem; border-radius: 12px; font-family: monospace;">Unified Cosmic Mechanics Evolution Theory · Chinese Academic Archive (Open Access)</span> — This homepage serves as the official academic hub, synchronized with archival repositories.</p>
+        <p>Scholars interested in accessing full papers, supplementary materials, or collaborative verification are welcome to contact the corresponding author under the terms of the CC BY-SA license.</p>
+    </div>
+
+    <!-- Citation Section -->
+    <div class="card">
+        <h2>📖 How to Cite</h2>
         <div class="highlight" style="font-family: 'Courier New', monospace; font-size:0.85rem;">
-            Unified Cosmic Mechanics Evolution Theory (UCMET) Author(s). (2024-2026). "Unified Cosmic Mechanics Evolution Theory (I-XXIII): Complete Foundational Framework for Physics". Chinese Academic Archives. DOI: (待分配/可访问存档版本).<br>
-            建议引用格式: 作者. 统一宇宙力学演化理论系列论文. 中国权威学术平台, 2026. CC BY-SA 4.0.
+            Unified Cosmic Mechanics Evolution Theory (UCMET) Author(s). (2024-2026). "Unified Cosmic Mechanics Evolution Theory (I-XXIII): Complete Foundational Framework for Physics". GitHub Permanent Archive. <br>
+            Suggested citation: Author(s). Unified Cosmic Mechanics Evolution Theory Series. GitHub, 2026. CC BY-SA 4.0.
         </div>
-        <p style="margin-top: 0.8rem;">本页面提供理论结构总览与核心声明，完整数学细节请参阅系列原著。</p>
+        <p style="margin-top: 0.8rem;">This page provides the structural overview and core statements; full mathematical details are available in the original series.</p>
     </div>
 
-    <!-- GitHub 建站版说明 + 实验室信息 -->
+    <!-- Footer for GitHub Pages -->
     <div class="footer">
-        <p>© 2024–2026 统一宇宙力学演化理论 (UCMET) 团队 | 基于 <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color:#1e4a6b;">CC BY-SA 4.0</a> 授权 | 欢迎学术共享</p>
-        <p style="margin-top: 0.5rem;">📡 本页面适配 GitHub Pages 个人学术站部署 | 完全公开 · 永久存档 · 抵制学术沉默</p>
-        <p style="margin-top: 0.2rem; font-size:0.75rem;">最后更新: 2026年4月 | 包含全部23篇系列核心信息 | 自由访问与验证</p>
-        <!-- 简单装饰 -->
+        <p>© 2024–2026 Unified Cosmic Mechanics Evolution Theory (UCMET) Group | Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color:#1e4a6b;">CC BY-SA 4.0</a> | Open Science Commitment</p>
+        <p style="margin-top: 0.5rem;">📡 Optimized for GitHub Pages academic deployment | Fully public · Permanent archiving · Resisting academic silence</p>
+        <p style="margin-top: 0.2rem; font-size:0.75rem;">Last Updated: April 2026 | Includes full 23-paper core information | Free access & verification</p>
         <div style="height: 4px; width: 60px; background: #2c7da0; margin: 1rem auto 0; border-radius: 4px;"></div>
     </div>
 </div>
