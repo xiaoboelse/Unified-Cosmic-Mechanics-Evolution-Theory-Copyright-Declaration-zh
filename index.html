@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="统一宇宙力学演化理论：一个完整、自洽的基础物理框架，统一经典力学、相对论与量子力学，涵盖质量、能量、力、暗物质、暗能量、量子测量等核心问题。">
+    <meta name="keywords" content="统一宇宙力学演化理论, Unified Cosmic Mechanics Evolution Theory, 物理框架, 量子力学, 相对论, 暗物质, 暗能量, 引力, 波粒二象性">
+    <meta name="author" content="UCMET 作者">
+    <title>统一宇宙力学演化理论 | 完整基础物理框架</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            background-color: #faf9f8;
+            color: #1e2a3a;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0b2b3b 0%, #123e4f 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .hero h1 small {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #ffb347;
+            color: #1e2a3a;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e9ecef;
+        }
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            border-left: 5px solid #2c7da0;
+            padding-left: 1rem;
+            color: #0b2b3b;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0 0.8rem 0;
+            font-weight: 600;
+            color: #1e4a6b;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .highlight {
+            background: #f0f7fc;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #2c7da0;
+        }
+        .paper-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.9rem;
+            margin-top: 1.2rem;
+        }
+        .paper-item {
+            background: #f8f9fc;
+            padding: 0.7rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .paper-item a {
+            text-decoration: none;
+            color: #1e4a6b;
+            font-weight: 500;
+            display: inline-block;
+            width: 100%;
+        }
+        .paper-item a:hover {
+            text-decoration: underline;
+            color: #0f3b56;
+        }
+        .paper-item strong {
+            color: #155f7c;
+            font-weight: 700;
+            margin-right: 0.3rem;
+        }
+        .paper-item:hover {
+            background: #eef3fa;
+            border-color: #bdd4e7;
+        }
+        .license-box {
+            background: #eef2f5;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dce5ec;
+            font-size: 0.85rem;
+            color: #4a627a;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        .declaration {
+            background: #fff6e5;
+            border-left: 4px solid #e6a017;
+        }
+        .archiving-list {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .archiving-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="badge">📡 完整自洽 · 第一原理重建</div>
+        <h1>
+            统一宇宙力学演化理论
+            <small>Unified Cosmic Mechanics Evolution Theory</small>
+        </h1>
+        <p style="font-size:1.2rem; max-width:800px; margin:0 auto">
+            一个完整、自洽的基础物理框架——逻辑自洽 + 数学形式化 + 与所有实验及自然观测一致
+        </p>
+        <div class="sub">
+            经典力学 · 相对论 · 量子力学 —— 完全兼容与重构
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⚛️ 理论概述</h2>
+        <p><strong>统一宇宙力学演化理论</strong> 从第一原理出发系统重建物理学基础，实现经典力学、相对论与量子力学的自然兼容。本框架提供了质量、能量、力、动量的规范化起源，并彻底解决波粒二象性、引力起源、暗物质、暗能量、哈勃张力、量子测量问题等核心基础难题。</p>
+        <p>全部内容均包含完整的数学验证、数值模拟验证以及观测一致性检验。从微观物质的状态表征，到宏观物质、生命、智能乃至天体的演化，提供统一的机制和完备的基础逻辑与推导依据。</p>
+        <div class="highlight">
+            📌 <strong>关键成就</strong>：重构因果相互作用演化，重新定义时空动力学，基于“动量拓扑编码确定性量子理论”及“网状引力模型”等系统性工作，解决长期存在的物理基础裂缝。
+        </div>
+    </div>
+
+    <div class="card declaration">
+        <h2>📢 重要学术声明</h2>
+        <p>本工作曾在 GitHub、OSF、Zenodo、Preprints.org 等国际平台遭遇学术审查沉默。因此，所有正式出版物与验证目前均托管于中国官方学术平台，并持续推进。本理论框架坚持开放获取，以完整、透明的形式面向全球学术界。</p>
+        <p><strong>所有论文、推导逻辑、数值模拟均已正式归档并公开发布，任何违反<em> CC BY-SA 4.0 许可</em>的行为将被记录并承担学术责任。</strong></p>
+    </div>
+
+    <div class="card">
+        <h2>📄 完整23篇论文系列</h2>
+        <p>以下为《统一宇宙力学演化理论》系列论文，覆盖从信息动力学、宇宙资源、时空重构，到单粒子相对论效应、量子纠缠、星系共演化及无延迟引力数值模拟等全部内容。点击标题即可打开PDF。</p>
+        <div class="paper-list">
+            <div class="paper-item"><strong>I.</strong> <a href="01.pdf" target="_blank">信息动力学演化系统</a></div>
+            <div class="paper-item"><strong>II.</strong> <a href="02.pdf" target="_blank">宇宙演化资源</a></div>
+            <div class="paper-item"><strong>III.</strong> <a href="03.pdf" target="_blank">宇宙演化规则</a></div>
+            <div class="paper-item"><strong>IV.</strong> <a href="04.pdf" target="_blank">宇宙力更新机制的必要性与时间起源</a></div>
+            <div class="paper-item"><strong>V.</strong> <a href="05.pdf" target="_blank">基础物理维度动态关系重构</a></div>
+            <div class="paper-item"><strong>VI.</strong> <a href="06.pdf" target="_blank">相对论、经典力学与量子力学的关系</a></div>
+            <div class="paper-item"><strong>VII.</strong> <a href="07.pdf" target="_blank">演化时空</a></div>
+            <div class="paper-item"><strong>VIII.</strong> <a href="08.pdf" target="_blank">单粒子高速动力学效应及其与相对论的关系</a></div>
+            <div class="paper-item"><strong>IX.</strong> <a href="09.pdf" target="_blank">基于相对论动力学的磁性起源重构</a></div>
+            <div class="paper-item"><strong>X.</strong> <a href="10.pdf" target="_blank">基于相对论效应的水星近日点进动与引力波动力学重建</a></div>
+            <div class="paper-item"><strong>XI.</strong> <a href="11.pdf" target="_blank">场与粒子 —— 动量拓扑编码确定性量子理论</a></div>
+            <div class="paper-item"><strong>XII.</strong> <a href="12.pdf" target="_blank">粒子封装速度增量方程的动力学兼容性验证</a></div>
+            <div class="paper-item"><strong>XIII.</strong> <a href="13.pdf" target="_blank">力的本质</a></div>
+            <div class="paper-item"><strong>XIV.</strong> <a href="14.pdf" target="_blank">粒子速度饱和动力学效应</a></div>
+            <div class="paper-item"><strong>XV.</strong> <a href="15.pdf" target="_blank">光子与电子因果相互作用态演化的对应关系</a></div>
+            <div class="paper-item"><strong>XVI.</strong> <a href="16.pdf" target="_blank">电子动力学半径公式的推导与验证</a></div>
+            <div class="paper-item"><strong>XVII.</strong> <a href="17.pdf" target="_blank">量子纠缠 —— 单粒子协同演化与三层角动量守恒</a></div>
+            <div class="paper-item"><strong>XVIII.</strong> <a href="18.pdf" target="_blank">电荷与质量的间接关系</a></div>
+            <div class="paper-item"><strong>XIX.</strong> <a href="19.pdf" target="_blank">多缝实验中的动量流分布积分原理</a></div>
+            <div class="paper-item"><strong>XX.</strong> <a href="20.pdf" target="_blank">动量拓扑编码 —— 粒子态演化方程的推导</a></div>
+            <div class="paper-item"><strong>XXI.</strong> <a href="21.pdf" target="_blank">大尺度星系共演化 —— 动量偏差卸载与网状引力模型</a></div>
+            <div class="paper-item"><strong>XXII.</strong> <a href="22.pdf" target="_blank">宇宙自由稳态二元博弈演化 —— 自然演化与非自然演化</a></div>
+            <div class="paper-item"><strong>XXIII.</strong> <a href="23.pdf" target="_blank">无延迟引力相互作用数值模拟 & 网状引力动力学 (收敛并验证)</a></div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #2c5282;">✅ 每篇论文均兼容完整数学推导、模拟验证及观测校验，构成自洽体系。</p>
+    </div>
+
+    <!-- 解决的核心基础问题（已添加论文链接） -->
+    <div class="card">
+        <h2>🔭 解决的核心基础问题</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem;">
+            <a href="05.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">质量/能量/力/动量的规范化起源 📄</a>
+            <a href="11.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">波粒二象性 📄</a>
+            <a href="13.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">引力起源 📄</a>
+            <a href="21.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">暗物质问题 📄</a>
+            <a href="23.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">暗能量问题 📄</a>
+            <a href="23.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">哈勃张力 📄</a>
+            <a href="11.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">量子测量问题 📄</a>
+            <a href="17.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">量子纠缠与定域性 📄</a>
+            <a href="10.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">水星近日点进动重建 📄</a>
+            <a href="04.pdf" target="_blank" style="background:#e9ecef; padding:0.2rem 1rem; border-radius:50px; text-decoration:none; color:#1e2a3a; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#2c7da0'; this.style.color='white';" onmouseout="this.style.backgroundColor='#e9ecef'; this.style.color='#1e2a3a';">无延迟引力与网状动力学 📄</a>
+        </div>
+        <p class="highlight" style="margin-top: 1.2rem;">🎯 逻辑自洽 · 数学形式化 · 全实验一致性 —— 从微观粒子到星系团尺度统一的因果演化机制。</p>
+    </div>
+
+    <div class="card declaration">
+        <h2>📌 学术存档与权利声明</h2>
+        <p><strong>本作品已通过以下方式完成学术确权：</strong></p>
+        <ul class="archiving-list">
+            <li>✅ 中华人民共和国版权登记（登记号：[请填写您的编号]）</li>
+            <li>✅ GitHub 永久存档（仓库创建时间：2026年4月，不可篡改的提交历史记录）</li>
+            <li>✅ 本网站及全部PDF文件采用 <strong>CC BY-SA 4.0</strong> 国际许可公开授权</li>
+        </ul>
+        <p><strong>法律效力声明</strong>：上述存档方式在中华人民共和国司法实践中可作为著作权归属的初步证据。任何抄袭、盗用或未经授权的重新发表行为，将被依法追究责任。</p>
+    </div>
+
+    <div class="card">
+        <h2>📜 许可与版权声明</h2>
+        <div class="license-box">
+            <p>📌 本作品采用 <strong>Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</strong> 许可协议。</p>
+            <p><strong>署名 (Attribution)</strong>：任何使用、复制或分发本框架、论文、公式、理论逻辑及内容时，必须保留原始作者署名和来源链接。<br>
+            <strong>相同方式共享 (ShareAlike)</strong>：任何基于本理论的衍生作品、改编、重构或二次研究，必须采用相同的 CC BY-SA 4.0 许可发布。<br>
+            <strong>禁止未经授权盗用</strong>：严禁抄袭、部分复制、理论更名、隐藏引用或以独立原创提交而不明确引用。<br>
+            <strong>禁止商业滥用</strong>：未经授权进行商业许可、付费转载或对任何核心理论内容申请专利。</p>
+            <p style="margin-top:0.5rem; font-size:0.85rem;">⚖️ 所有理论框架、逻辑链、数学推导、物理模型及论文系列已正式存档并公开发布。任何违反本许可的行为将被记录并在学术及公共记录中追责。</p>
+        </div>
+        <p style="margin-top: 1rem; font-size:0.9rem;">📑 所有系列论文完整版权归原作者/团队所有，遵循开放科学精神，欢迎在遵守许可条件下引用与扩展。</p>
+    </div>
+
+    <div class="card">
+        <h2>🧪 完备性验证</h2>
+        <p>本理论通过完整的数学形式化、数值仿真验证及与实验/观测的一致性检查，包括但不限于：粒子高速动力学仿真、多缝实验动量流分布积分、无延迟引力相互作用的收敛数值模拟、星系大尺度网状引力模型验证、电子动力学半径公式推导与实验对比等。每个部分均自洽闭合，并与已知物理学实验及天文观测结果高度一致（涵盖从微观量子到宇宙学尺度）。</p>
+        <p>通过重建“动量拓扑编码确定性量子理论”和“演化时空”，彻底消解了哥本哈根诠释中的测量困难，赋予量子力学确定的局域演化基础。同时网状引力模型自然地解释了暗物质与暗能量的动力学起源，无需引入额外奇异组分。</p>
+    </div>
+
+    <div class="card">
+        <h2>🌐 正式发布与存档</h2>
+        <p>由于早期国际平台遭遇沉默审查，本工作系列论文、完整推导手稿、数值代码及验证材料目前均在中国官方学术平台进行正式出版和托管。所有研究成果都可经由指定存储库与学术数据库获取，以确保长期可用性与透明性。</p>
+        <p>🔗 官方持续更新地址: <span style="background:#ebf4ff; padding:0.2rem 0.5rem; border-radius: 12px; font-family: monospace;">统一宇宙力学演化理论 · 中国学术平台存档 (开放获取)</span>  — 本页面作为永久学术主页，与官方存储库保持同步。</p>
+        <p>任何希望获取论文PDF、补充材料或合作验证的学者，欢迎依照CC许可条款联系主要作者进行学术交流。</p>
+    </div>
+
+    <div class="card">
+        <h2>📖 如何引用</h2>
+        <div class="highlight" style="font-family: 'Courier New', monospace; font-size:0.85rem;">
+            Unified Cosmic Mechanics Evolution Theory (UCMET) Author(s). (2024-2026). "Unified Cosmic Mechanics Evolution Theory (I-XXIII): Complete Foundational Framework for Physics". GitHub永久存档 & 中国学术平台.<br>
+            建议引用格式: 作者. 统一宇宙力学演化理论系列论文. 中国学术平台 / GitHub, 2026. CC BY-SA 4.0.
+        </div>
+        <p style="margin-top: 0.8rem;">本页面提供理论结构总览与核心声明，完整数学细节请参阅系列原著。</p>
+    </div>
+
+    <div class="footer">
+        <p>© 2024–2026 统一宇宙力学演化理论 (UCMET) 团队 | 基于 <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color:#1e4a6b;">CC BY-SA 4.0</a> 授权 | 欢迎学术共享</p>
+        <p style="margin-top: 0.5rem;">📡 本页面适配 GitHub Pages 个人学术站部署 | 完全公开 · 永久存档 · 抵制学术沉默</p>
+        <p style="margin-top: 0.2rem; font-size:0.75rem;">最后更新: 2026年4月 | 包含全部23篇系列核心信息 | 自由访问与验证</p>
+        <div style="height: 4px; width: 60px; background: #2c7da0; margin: 1rem auto 0; border-radius: 4px;"></div>
+    </div>
+</div>
+</body>
+</html>
