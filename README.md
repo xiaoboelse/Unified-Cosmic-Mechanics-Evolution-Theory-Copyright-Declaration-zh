@@ -22,7 +22,7 @@ All contents include complete mathematical verification, numerical simulation va
 ## Important Declaration
 **Date of Declaration: April 30, 2026**
 
-This work was met with silent academic censorship on GitHub, OSF, Zenodo, Preprints.org, and other international platforms.
+This work was met with silent academic censorship on OSF, Zenodo, Preprints.org, and other international platforms.
 Therefore, all formal publications and validations are now hosted and progressing on Chinese official academic platforms.
 
 ---
