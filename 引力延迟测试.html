@@ -2,189 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>惯性直线 + 径向分段修正（修正版）</title>
+  <title>宇宙引力模拟器 - 初始值修正版</title>
   <style>
-    body { background: #000; color: white; text-align: center; font-family: sans-serif; }
-    #space { position: relative; width: 600px; height: 600px; margin: 20px auto; border: 1px solid #444; }
-    .obj { position: absolute; transform: translate(-50%, -50%); border-radius: 50%; }
-    #sun { width: 20px; height: 20px; background: gold; }
-    #neptune { width: 8px; height: 8px; background: cyan; }
+    body { background: #000; color: white; text-align: center; font-family: sans-serif; margin: 0; overflow: hidden; }
+    #ui { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 15, 15, 0.95); padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; border-bottom: 1px solid #333; z-index: 100; }
+    .param { display: flex; flex-direction: column; align-items: flex-start; width: 120px; font-size: 11px; }
+    input[type=range] { width: 100%; cursor: pointer; }
+    #space { position: relative; width: 100vw; height: 100vh; background: #000; cursor: grab; }
     canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
-    .info { margin: 10px; color: #aaa; }
-    .control { margin: 10px; }
-    input { width: 200px; }
+    .obj { position: absolute; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; }
+    #sun { width: 30px; height: 30px; background: radial-gradient(circle, #fff, #ff0, #f60); box-shadow: 0 0 40px #f60; }
+    #planet { width: 10px; height: 10px; background: cyan; box-shadow: 0 0 15px cyan; }
+    span { color: #0cf; font-weight: bold; font-family: monospace; }
+    #status { position: fixed; bottom: 20px; width: 100%; color: #ff4444; font-weight: bold; font-size: 20px; text-shadow: 0 0 10px black; }
   </style>
 </head>
 <body>
 
-<h3>惯性运动 + 定期径向修正（修正速度连续性）</h3>
-<div class="info">
-  修正间隔: <span id="dtValue">100</span>ms | 
-  切向速度: <span id="speedValue">10</span>px/s | 
-  修正次数: <span id="correctionCount">0</span>
-</div>
-<div class="control">
-  <label>修正间隔 (ms): </label>
-  <input type="range" id="dtSlider" min="10" max="500" value="100" step="10">
-</div>
-<div class="control">
-  <label>切向速度: </label>
-  <input type="range" id="speedSlider" min="1" max="30" value="10" step="1">
+<div id="ui">
+  <!-- 注意：这里的 span id 要对应，input 的 value 也要对应 -->
+        <label>【引力延迟模拟】1.4r距离衰减  <span>建议用鼠标缩放视图</span></label>
+  <div class="param">
+    <label>引力 (G): <span id="gVal">...</span></label>
+    <input type="range" id="gSlider" min="0" max="1000000" step="500">
+  </div>
+  <div class="param">
+    <label>引力延迟: <span id="dtVal">...</span>ms</label>
+    <input type="range" id="dtSlider" min="5" max="2000">
+  </div>
+  <div class="param">
+    <label>运动速度: <span id="vVal">...</span>x</label>
+    <input type="range" id="vSlider" min="0.01" max="10.0" step="0.05">
+  </div>
+  <div class="param">
+    <label>轨道寿命: <span id="lifeVal">...</span>秒</label>
+    <input type="range" id="lifeSlider" min="1" max="300">
+  </div>
+  <div class="param">
+    <label>视图缩放: <span id="zoomVal">...</span>x</label>
+    <input type="range" id="zoomSlider" min="0.01" max="10.0" step="0.01">
+  </div>
+  <button onclick="resetOrbit()" style="margin-top:10px; padding: 5px 15px; cursor:pointer; height: 30px;">重置</button>
 </div>
 
 <div id="space">
+  <canvas id="trailCanvas"></canvas>
   <div id="sun" class="obj"></div>
-  <div id="neptune" class="obj"></div>
-  <canvas id="trail" width="600" height="600"></canvas>
+  <div id="planet" class="obj"></div>
 </div>
 
-<script>
-  const SUN_X = 300, SUN_Y = 300;
-  const TARGET_RADIUS = 200;
-  
-  // 初始状态
-  let x = SUN_X + TARGET_RADIUS;
-  let y = SUN_Y;
-  let velocityX = 0;    // 初始速度向右（切向）
-  let velocityY = -10;  // 向上运动
-  
-  // 可调参数
-  let dt_physics = 3; // 100ms
-  let TANGENTIAL_SPEED = 10;
-  
-  // 修正计数
-  let correctionCount = 0;
-  let timeAccum = 0;
+<div id="status"></div>
 
-  // DOM元素
-  const neptune = document.getElementById('neptune');
-  const sun = document.getElementById('sun');
-  const canvas = document.getElementById('trail');
+<script>
+  const canvas = document.getElementById('trailCanvas');
   const ctx = canvas.getContext('2d');
-  const dtSlider = document.getElementById('dtSlider');
-  const dtValue = document.getElementById('dtValue');
-  const speedSlider = document.getElementById('speedSlider');
-  const speedValue = document.getElementById('speedValue');
-  const correctionDisplay = document.getElementById('correctionCount');
+  const planetEl = document.getElementById('planet');
+  const sunEl = document.getElementById('sun');
+  const statusEl = document.getElementById('status');
+  const space = document.getElementById('space');
+
+  // --- 1. 这里定义所有的【真实初始值】 ---
+  let G = 200000;         // 引力强度
+  let dtPhysics = 0.2;    // 0.2s = 200ms
+  let vScale = 1.0;       // 速度倍率
+  let trailLife = 20000;  // 20秒 = 20000ms
+  let zoom = 0.4;        // 缩放倍率
   
-  // 初始化显示
-  neptune.style.left = x + 'px';
-  neptune.style.top = y + 'px';
-  sun.style.left = SUN_X + 'px';
-  sun.style.top = SUN_Y + 'px';
-  
-  // 轨迹绘制
-  ctx.strokeStyle = 'rgba(0, 200, 255, 0.7)';
-  ctx.lineWidth = 1.2;
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  
-  // 标记修正点
-  function markCorrectionPoint(x, y) {
-    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
-    ctx.beginPath();
-    ctx.arc(x, y, 3, 0, Math.PI*2);
-    ctx.fill();
+  let px = 250, py = 0;   
+  let vx = 0, vy = -180;  
+  let trailPoints = [];   
+  let isCaptured = false; 
+  let camX = window.innerWidth / 2;
+  let camY = window.innerHeight / 2;
+  let timeAccum = 0;
+  let lastTime = 0;
+  let isDragging = false;
+  let lastMouseX, lastMouseY;
+
+  // --- 2. 同步 UI 函数：让滑块和文字 匹配 JS 变量 ---
+  function syncUI() {
+    // 同步引力
+    document.getElementById('gSlider').value = G;
+    document.getElementById('gVal').innerText = G;
     
-    // 在修正点处绘制一个小的方向指示器
-    const arrowLength = 15;
-    ctx.strokeStyle = 'rgba(255, 255, 0, 0.6)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + velocityX * 0.5, y + velocityY * 0.5);
-    ctx.stroke();
+    // 同步延迟 (s -> ms)
+    document.getElementById('dtSlider').value = dtPhysics * 1000;
+    document.getElementById('dtVal').innerText = Math.round(dtPhysics * 1000);
+    
+    // 同步速度
+    document.getElementById('vSlider').value = vScale;
+    document.getElementById('vVal').innerText = vScale.toFixed(2);
+    
+    // 同步寿命 (ms -> s)
+    document.getElementById('lifeSlider').value = trailLife / 1000;
+    document.getElementById('lifeVal').innerText = trailLife / 1000;
+    
+    // 同步缩放
+    document.getElementById('zoomSlider').value = zoom;
+    document.getElementById('zoomVal').innerText = zoom.toFixed(2);
   }
-  
-  // 帧循环
-  function frame(timestamp) {
-    if (typeof frame.last === 'undefined') frame.last = timestamp;
-    const dt_render = (timestamp - frame.last) / 1000;
-    frame.last = timestamp;
-    
-    // 1. 惯性运动（恒定速度）
-    x += velocityX * dt_render;
-    y += velocityY * dt_render;
-    
-    // 2. 时间累积
-    timeAccum += dt_render;
-    
-    // 3. 定期径向修正
-    if (timeAccum >= dt_physics) {
-      const dx = x - SUN_X;
-      const dy = y - SUN_Y;
-      const currentDist = Math.sqrt(dx * dx + dy * dy);
-      
-      if (currentDist !== 0) {
-        // 单位径向向量
-        const nx = dx / currentDist;
-        const ny = dy / currentDist;
-        
-        // 记录修正前的速度
-        const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-        
-        // 仅仅修正位置到圆上（核心！）
-        x = SUN_X + nx * TARGET_RADIUS;
-        y = SUN_Y + ny * TARGET_RADIUS;
-        
-        // 保持速度大小不变，但调整方向以保持连续性
-        // 这里的关键是：我们保持速度向量的切向分量，但消除径向分量
-        const velocityRadial = velocityX * nx + velocityY * ny;
-        
-        // 从速度中减去径向分量
-        velocityX = velocityX - nx * velocityRadial;
-        velocityY = velocityY - ny * velocityRadial;
-        
-        // 重新归一化到原来的速度大小
-        const newSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-        if (newSpeed > 0.001) {
-          velocityX = velocityX / newSpeed * TANGENTIAL_SPEED;
-          velocityY = velocityY / newSpeed * TANGENTIAL_SPEED;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    camX = window.innerWidth / 2;
+    camY = window.innerHeight / 2;
+  }
+
+  function resetOrbit() {
+    px = 250; py = 0;
+    vx = 0; vy = -180;
+    isCaptured = false;
+    trailPoints = [];
+    statusEl.innerText = "";
+  }
+
+  function frame(t) {
+    if (!lastTime) lastTime = t;
+    let dt = (t - lastTime) / 1000;
+    if (dt > 0.05) dt = 0.05;
+    lastTime = t;
+
+    if (!isCaptured) {
+      px += vx * vScale * dt;
+      py += vy * vScale * dt;
+
+      timeAccum += dt;
+      if (timeAccum >= dtPhysics) {
+        const rSq = px * px + py * py;
+        const r = Math.sqrt(rSq);
+        if (r < 15) {
+          isCaptured = true;
+          px = 0; py = 0; vx = 0; vy = 0;
+          statusEl.innerText = "CAPTURED BY GRAVITY";
         } else {
-          // 特殊情况处理：如果速度几乎为0，赋予一个切向速度
-          velocityX = -ny * TANGENTIAL_SPEED;
-          velocityY = nx * TANGENTIAL_SPEED;
+          // 物理公式：标准平方反比 r^2
+          const force = (G / (rSq + 400)) * timeAccum * 40; 
+          vx -= force * (px / r);
+          vy -= force * (py / r);
         }
-        
-        // 标记修正点
-        markCorrectionPoint(x, y);
-        correctionCount++;
-        correctionDisplay.textContent = correctionCount;
+        timeAccum = 0;
       }
-      
-      timeAccum -= dt_physics;
+      trailPoints.push({ x: px, y: py, t: t });
     }
-    
-    // 更新显示
-    neptune.style.left = x + 'px';
-    neptune.style.top = y + 'px';
-    
-    // 绘制轨迹
-    ctx.lineTo(x, y);
-    ctx.stroke();
-    
+
+    while (trailPoints.length > 0 && t - trailPoints[0].t > trailLife) {
+      trailPoints.shift();
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sunEl.style.left = camX + 'px';
+    sunEl.style.top = camY + 'px';
+    planetEl.style.left = (camX + px * zoom) + 'px';
+    planetEl.style.top = (camY + py * zoom) + 'px';
+
+    if (trailPoints.length > 1) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(0, 255, 255, 0.5)`;
+      ctx.lineWidth = Math.max(0.5, 1.2 * zoom);
+      const start = trailPoints[0];
+      ctx.moveTo(camX + start.x * zoom, camY + start.y * zoom);
+      for (let i = 1; i < trailPoints.length; i++) {
+        const p = trailPoints[i];
+        ctx.lineTo(camX + p.x * zoom, camY + p.y * zoom);
+      }
+      ctx.stroke();
+    }
     requestAnimationFrame(frame);
   }
-  
-  // 滑块控制
-  dtSlider.addEventListener('input', function() {
-    dt_physics = this.value / 1000; // 转换为秒
-    dtValue.textContent = this.value;
-  });
-  
-  speedSlider.addEventListener('input', function() {
-    TANGENTIAL_SPEED = parseFloat(this.value);
-    speedValue.textContent = this.value;
-    
-    // 调整当前速度大小，保持方向
-    const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-    if (currentSpeed > 0) {
-      velocityX = velocityX / currentSpeed * TANGENTIAL_SPEED;
-      velocityY = velocityY / currentSpeed * TANGENTIAL_SPEED;
-    }
-  });
-  
-  // 开始动画
+
+  // --- 交互系统 ---
+  space.onmousedown = (e) => { isDragging = true; lastMouseX = e.clientX; lastMouseY = e.clientY; };
+  window.onmousemove = (e) => {
+    if (!isDragging) return;
+    camX += e.clientX - lastMouseX;
+    camY += e.clientY - lastMouseY;
+    lastMouseX = e.clientX; lastMouseY = e.clientY;
+  };
+  window.onmouseup = () => isDragging = false;
+
+  window.onwheel = (e) => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.1 : 0.9;
+    zoom *= factor;
+    zoom = Math.max(0.01, Math.min(zoom, 50));
+    document.getElementById('zoomSlider').value = zoom;
+    document.getElementById('zoomVal').innerText = zoom.toFixed(2);
+  };
+
+  // 滑块改变值
+  document.getElementById('gSlider').oninput = function() {
+    G = this.value; document.getElementById('gVal').innerText = G;
+  };
+  document.getElementById('dtSlider').oninput = function() {
+    dtPhysics = this.value / 1000; document.getElementById('dtVal').innerText = this.value;
+  };
+  document.getElementById('vSlider').oninput = function() {
+    vScale = parseFloat(this.value); document.getElementById('vVal').innerText = vScale.toFixed(2);
+  };
+  document.getElementById('zoomSlider').oninput = function() {
+    zoom = parseFloat(this.value); document.getElementById('zoomVal').innerText = zoom.toFixed(2);
+  };
+  document.getElementById('lifeSlider').oninput = function() {
+    trailLife = this.value * 1000; document.getElementById('lifeVal').innerText = this.value;
+  };
+
+  // --- 启动逻辑 ---
+  resize();
+  syncUI(); // <--- 关键：在启动时同步滑块状态
+  window.onresize = resize;
   requestAnimationFrame(frame);
 </script>
 
