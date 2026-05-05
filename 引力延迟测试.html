@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>宇宙引力模拟器 - 初始值修正版</title>
+  <title>引力延迟二体系统模拟 - 论文实验版</title>
   <style>
     body { background: #000; color: white; text-align: center; font-family: sans-serif; margin: 0; overflow: hidden; }
     #ui { position: fixed; top: 0; left: 0; width: 100%; background: rgba(15, 15, 15, 0.95); padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; border-bottom: 1px solid #333; z-index: 100; }
@@ -14,35 +14,35 @@
     #sun { width: 30px; height: 30px; background: radial-gradient(circle, #fff, #ff0, #f60); box-shadow: 0 0 40px #f60; }
     #planet { width: 10px; height: 10px; background: cyan; box-shadow: 0 0 15px cyan; }
     span { color: #0cf; font-weight: bold; font-family: monospace; }
-    #status { position: fixed; bottom: 20px; width: 100%; color: #ff4444; font-weight: bold; font-size: 20px; text-shadow: 0 0 10px black; }
+    #status { position: fixed; bottom: 80px; width: 100%; color: #ff4444; font-weight: bold; font-size: 20px; text-shadow: 0 0 10px black; pointer-events: none; }
+    .guide { position: fixed; bottom: 10px; right: 10px; color: #444; font-size: 11px; }
   </style>
 </head>
 <body>
 
 <div id="ui">
-  <!-- 注意：这里的 span id 要对应，input 的 value 也要对应 -->
-        <label>【引力延迟模拟】1.4r距离衰减  <span>建议用鼠标缩放视图</span></label>
+  <div style="width: 100%; font-size: 14px; margin-bottom: 5px; color: #aaa;">二体引力延迟实验框架 (1/r² 模式)</div>
   <div class="param">
     <label>引力 (G): <span id="gVal">...</span></label>
-    <input type="range" id="gSlider" min="0" max="1000000" step="500">
+    <input type="range" id="gSlider" min="0" max="1000000" step="1000">
   </div>
   <div class="param">
-    <label>引力延迟: <span id="dtVal">...</span>ms</label>
+    <label>引力延迟 (τ): <span id="dtVal">...</span>ms</label>
     <input type="range" id="dtSlider" min="5" max="2000">
   </div>
   <div class="param">
-    <label>运动速度: <span id="vVal">...</span>x</label>
+    <label>惯性速度 (v_t): <span id="vVal">...</span>x</label>
     <input type="range" id="vSlider" min="0.01" max="10.0" step="0.05">
   </div>
   <div class="param">
-    <label>轨道寿命: <span id="lifeVal">...</span>秒</label>
+    <label>轨道寿命: <span id="lifeVal">...</span>s</label>
     <input type="range" id="lifeSlider" min="1" max="300">
   </div>
   <div class="param">
     <label>视图缩放: <span id="zoomVal">...</span>x</label>
     <input type="range" id="zoomSlider" min="0.01" max="10.0" step="0.01">
   </div>
-  <button onclick="resetOrbit()" style="margin-top:10px; padding: 5px 15px; cursor:pointer; height: 30px;">重置</button>
+  <button onclick="resetOrbit()" style="margin-top:10px; padding: 5px 15px; cursor:pointer; height: 30px; border:none; background:#444; color:white; border-radius:4px;">重置轨道</button>
 </div>
 
 <div id="space">
@@ -52,6 +52,7 @@
 </div>
 
 <div id="status"></div>
+<div class="guide">拖拽平移 | 滚轮缩放 | 截图建议保留左下角数据看板</div>
 
 <script>
   const canvas = document.getElementById('trailCanvas');
@@ -61,17 +62,18 @@
   const statusEl = document.getElementById('status');
   const space = document.getElementById('space');
 
-  // --- 1. 这里定义所有的【真实初始值】 ---
-  let G = 200000;         // 引力强度
-  let dtPhysics = 0.2;    // 0.2s = 200ms
-  let vScale = 1.0;       // 速度倍率
-  let trailLife = 20000;  // 20秒 = 20000ms
-  let zoom = 0.4;        // 缩放倍率
-  
-  let px = 250, py = 0;   
+  // --- 论文实验初始参数 ---
+  let G = 200000;         
+  let dtPhysics = 0.2;    // 200ms
+  let vScale = 1.0;       
+  let trailLife = 20000;  // 20s
+  let zoom = 0.4;        
+
+  let px = 250, py = 0;   // 初始半径 R=250
   let vx = 0, vy = -180;  
   let trailPoints = [];   
   let isCaptured = false; 
+
   let camX = window.innerWidth / 2;
   let camY = window.innerHeight / 2;
   let timeAccum = 0;
@@ -79,25 +81,16 @@
   let isDragging = false;
   let lastMouseX, lastMouseY;
 
-  // --- 2. 同步 UI 函数：让滑块和文字 匹配 JS 变量 ---
+  // 初始化 UI 同步
   function syncUI() {
-    // 同步引力
     document.getElementById('gSlider').value = G;
     document.getElementById('gVal').innerText = G;
-    
-    // 同步延迟 (s -> ms)
     document.getElementById('dtSlider').value = dtPhysics * 1000;
     document.getElementById('dtVal').innerText = Math.round(dtPhysics * 1000);
-    
-    // 同步速度
     document.getElementById('vSlider').value = vScale;
     document.getElementById('vVal').innerText = vScale.toFixed(2);
-    
-    // 同步寿命 (ms -> s)
     document.getElementById('lifeSlider').value = trailLife / 1000;
     document.getElementById('lifeVal').innerText = trailLife / 1000;
-    
-    // 同步缩放
     document.getElementById('zoomSlider').value = zoom;
     document.getElementById('zoomVal').innerText = zoom.toFixed(2);
   }
@@ -105,16 +98,41 @@
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    camX = window.innerWidth / 2;
-    camY = window.innerHeight / 2;
   }
 
   function resetOrbit() {
-    px = 250; py = 0;
-    vx = 0; vy = -180;
-    isCaptured = false;
-    trailPoints = [];
+    px = 250; py = 0; vx = 0; vy = -180;
+    isCaptured = false; trailPoints = [];
     statusEl.innerText = "";
+  }
+
+  // 绘制辅助背景
+  function drawAuxiliary() {
+    // 1. 绘制网格
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.lineWidth = 1;
+    const step = 100 * zoom;
+    for (let i = camX % step; i < canvas.width; i += step) {
+      ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height);
+    }
+    for (let j = camY % step; j < canvas.height; j += step) {
+      ctx.moveTo(0, j); ctx.lineTo(canvas.width, j);
+    }
+    ctx.stroke();
+
+    // 2. 绘制理想参考圆 (R=250)
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(0, 255, 0, 0.15)';
+    ctx.arc(camX, camY, 250 * zoom, 0, Math.PI * 2);
+    ctx.stroke();
+    
+    // 3. 绘制中心十字
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.moveTo(camX - 20, camY); ctx.lineTo(camX + 20, camY);
+    ctx.moveTo(camX, camY - 20); ctx.lineTo(camX, camY + 20);
+    ctx.stroke();
   }
 
   function frame(t) {
@@ -123,21 +141,21 @@
     if (dt > 0.05) dt = 0.05;
     lastTime = t;
 
+    const r = Math.sqrt(px * px + py * py);
+
     if (!isCaptured) {
       px += vx * vScale * dt;
       py += vy * vScale * dt;
 
       timeAccum += dt;
       if (timeAccum >= dtPhysics) {
-        const rSq = px * px + py * py;
-        const r = Math.sqrt(rSq);
         if (r < 15) {
           isCaptured = true;
           px = 0; py = 0; vx = 0; vy = 0;
-          statusEl.innerText = "CAPTURED BY GRAVITY";
+          statusEl.innerText = "CAPTURED (COLLISION)";
         } else {
-          // 物理公式：标准平方反比 r^2
-          const force = (G / (rSq + 400)) * timeAccum * 40; 
+          // 物理核心：平方反比
+          const force = (G / (px*px + py*py + 400)) * timeAccum * 40; 
           vx -= force * (px / r);
           vy -= force * (py / r);
         }
@@ -146,70 +164,70 @@
       trailPoints.push({ x: px, y: py, t: t });
     }
 
-    while (trailPoints.length > 0 && t - trailPoints[0].t > trailLife) {
-      trailPoints.shift();
-    }
+    while (trailPoints.length > 0 && t - trailPoints[0].t > trailLife) trailPoints.shift();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawAuxiliary();
+
     sunEl.style.left = camX + 'px';
     sunEl.style.top = camY + 'px';
     planetEl.style.left = (camX + px * zoom) + 'px';
     planetEl.style.top = (camY + py * zoom) + 'px';
 
+    // 绘制轨迹
     if (trailPoints.length > 1) {
       ctx.beginPath();
       ctx.strokeStyle = `rgba(0, 255, 255, 0.5)`;
       ctx.lineWidth = Math.max(0.5, 1.2 * zoom);
-      const start = trailPoints[0];
-      ctx.moveTo(camX + start.x * zoom, camY + start.y * zoom);
+      ctx.moveTo(camX + trailPoints[0].x * zoom, camY + trailPoints[0].y * zoom);
       for (let i = 1; i < trailPoints.length; i++) {
-        const p = trailPoints[i];
-        ctx.lineTo(camX + p.x * zoom, camY + p.y * zoom);
+        ctx.lineTo(camX + trailPoints[i].x * zoom, camY + trailPoints[i].y * zoom);
       }
       ctx.stroke();
     }
+
+    // 绘制看板数据 (用于论文截图)
+    ctx.fillStyle = "rgba(200, 200, 200, 0.8)";
+    ctx.font = "12px Monospace";
+    ctx.textAlign = "left";
+    let panelY = canvas.height - 120;
+    ctx.fillText(`[ EXPERIMENTAL TELEMETRY ]`, 20, panelY);
+    ctx.fillText(`Time Delay (τ): ${(dtPhysics*1000).toFixed(0)} ms`, 20, panelY + 20);
+    ctx.fillText(`Inertial Velocity (v_t): ${(Math.sqrt(vx*vx+vy*vy)*vScale).toFixed(2)} px/s`, 20, panelY + 40);
+    ctx.fillText(`Current Radius (r): ${r.toFixed(2)} px`, 20, panelY + 60);
+    ctx.fillText(`Radial Deviation (Δr): ${Math.abs(r - 250).toFixed(2)} px`, 20, panelY + 80);
+    ctx.fillText(`Zoom Scale: ${zoom.toFixed(2)}x`, 20, panelY + 100);
+
     requestAnimationFrame(frame);
   }
 
-  // --- 交互系统 ---
+  // 交互逻辑
   space.onmousedown = (e) => { isDragging = true; lastMouseX = e.clientX; lastMouseY = e.clientY; };
   window.onmousemove = (e) => {
-    if (!isDragging) return;
-    camX += e.clientX - lastMouseX;
-    camY += e.clientY - lastMouseY;
-    lastMouseX = e.clientX; lastMouseY = e.clientY;
+    if (isDragging) {
+      camX += e.clientX - lastMouseX;
+      camY += e.clientY - lastMouseY;
+      lastMouseX = e.clientX; lastMouseY = e.clientY;
+    }
   };
   window.onmouseup = () => isDragging = false;
-
   window.onwheel = (e) => {
     e.preventDefault();
-    const factor = e.deltaY < 0 ? 1.1 : 0.9;
-    zoom *= factor;
+    zoom *= (e.deltaY < 0 ? 1.1 : 0.9);
     zoom = Math.max(0.01, Math.min(zoom, 50));
     document.getElementById('zoomSlider').value = zoom;
     document.getElementById('zoomVal').innerText = zoom.toFixed(2);
   };
 
-  // 滑块改变值
-  document.getElementById('gSlider').oninput = function() {
-    G = this.value; document.getElementById('gVal').innerText = G;
-  };
-  document.getElementById('dtSlider').oninput = function() {
-    dtPhysics = this.value / 1000; document.getElementById('dtVal').innerText = this.value;
-  };
-  document.getElementById('vSlider').oninput = function() {
-    vScale = parseFloat(this.value); document.getElementById('vVal').innerText = vScale.toFixed(2);
-  };
-  document.getElementById('zoomSlider').oninput = function() {
-    zoom = parseFloat(this.value); document.getElementById('zoomVal').innerText = zoom.toFixed(2);
-  };
-  document.getElementById('lifeSlider').oninput = function() {
-    trailLife = this.value * 1000; document.getElementById('lifeVal').innerText = this.value;
-  };
+  // UI 事件绑定
+  document.getElementById('gSlider').oninput = function() { G = this.value; document.getElementById('gVal').innerText = G; };
+  document.getElementById('dtSlider').oninput = function() { dtPhysics = this.value / 1000; document.getElementById('dtVal').innerText = this.value; };
+  document.getElementById('vSlider').oninput = function() { vScale = parseFloat(this.value); document.getElementById('vVal').innerText = vScale.toFixed(2); };
+  document.getElementById('zoomSlider').oninput = function() { zoom = parseFloat(this.value); document.getElementById('zoomVal').innerText = zoom.toFixed(2); };
+  document.getElementById('lifeSlider').oninput = function() { trailLife = this.value * 1000; document.getElementById('lifeVal').innerText = this.value; };
 
-  // --- 启动逻辑 ---
   resize();
-  syncUI(); // <--- 关键：在启动时同步滑块状态
+  syncUI();
   window.onresize = resize;
   requestAnimationFrame(frame);
 </script>
