@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>惯性直线 + 径向分段修正（修正版）</title>
+  <style>
+    body { background: #000; color: white; text-align: center; font-family: sans-serif; }
+    #space { position: relative; width: 600px; height: 600px; margin: 20px auto; border: 1px solid #444; }
+    .obj { position: absolute; transform: translate(-50%, -50%); border-radius: 50%; }
+    #sun { width: 20px; height: 20px; background: gold; }
+    #neptune { width: 8px; height: 8px; background: cyan; }
+    canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+    .info { margin: 10px; color: #aaa; }
+    .control { margin: 10px; }
+    input { width: 200px; }
+  </style>
+</head>
+<body>
+
+<h3>惯性运动 + 定期径向修正（修正速度连续性）</h3>
+<div class="info">
+  修正间隔: <span id="dtValue">100</span>ms | 
+  切向速度: <span id="speedValue">10</span>px/s | 
+  修正次数: <span id="correctionCount">0</span>
+</div>
+<div class="control">
+  <label>修正间隔 (ms): </label>
+  <input type="range" id="dtSlider" min="10" max="500" value="100" step="10">
+</div>
+<div class="control">
+  <label>切向速度: </label>
+  <input type="range" id="speedSlider" min="1" max="30" value="10" step="1">
+</div>
+
+<div id="space">
+  <div id="sun" class="obj"></div>
+  <div id="neptune" class="obj"></div>
+  <canvas id="trail" width="600" height="600"></canvas>
+</div>
+
+<script>
+  const SUN_X = 300, SUN_Y = 300;
+  const TARGET_RADIUS = 200;
+  
+  // 初始状态
+  let x = SUN_X + TARGET_RADIUS;
+  let y = SUN_Y;
+  let velocityX = 0;    // 初始速度向右（切向）
+  let velocityY = -10;  // 向上运动
+  
+  // 可调参数
+  let dt_physics = 3; // 100ms
+  let TANGENTIAL_SPEED = 10;
+  
+  // 修正计数
+  let correctionCount = 0;
+  let timeAccum = 0;
+
+  // DOM元素
+  const neptune = document.getElementById('neptune');
+  const sun = document.getElementById('sun');
+  const canvas = document.getElementById('trail');
+  const ctx = canvas.getContext('2d');
+  const dtSlider = document.getElementById('dtSlider');
+  const dtValue = document.getElementById('dtValue');
+  const speedSlider = document.getElementById('speedSlider');
+  const speedValue = document.getElementById('speedValue');
+  const correctionDisplay = document.getElementById('correctionCount');
+  
+  // 初始化显示
+  neptune.style.left = x + 'px';
+  neptune.style.top = y + 'px';
+  sun.style.left = SUN_X + 'px';
+  sun.style.top = SUN_Y + 'px';
+  
+  // 轨迹绘制
+  ctx.strokeStyle = 'rgba(0, 200, 255, 0.7)';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  
+  // 标记修正点
+  function markCorrectionPoint(x, y) {
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, Math.PI*2);
+    ctx.fill();
+    
+    // 在修正点处绘制一个小的方向指示器
+    const arrowLength = 15;
+    ctx.strokeStyle = 'rgba(255, 255, 0, 0.6)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + velocityX * 0.5, y + velocityY * 0.5);
+    ctx.stroke();
+  }
+  
+  // 帧循环
+  function frame(timestamp) {
+    if (typeof frame.last === 'undefined') frame.last = timestamp;
+    const dt_render = (timestamp - frame.last) / 1000;
+    frame.last = timestamp;
+    
+    // 1. 惯性运动（恒定速度）
+    x += velocityX * dt_render;
+    y += velocityY * dt_render;
+    
+    // 2. 时间累积
+    timeAccum += dt_render;
+    
+    // 3. 定期径向修正
+    if (timeAccum >= dt_physics) {
+      const dx = x - SUN_X;
+      const dy = y - SUN_Y;
+      const currentDist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (currentDist !== 0) {
+        // 单位径向向量
+        const nx = dx / currentDist;
+        const ny = dy / currentDist;
+        
+        // 记录修正前的速度
+        const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+        
+        // 仅仅修正位置到圆上（核心！）
+        x = SUN_X + nx * TARGET_RADIUS;
+        y = SUN_Y + ny * TARGET_RADIUS;
+        
+        // 保持速度大小不变，但调整方向以保持连续性
+        // 这里的关键是：我们保持速度向量的切向分量，但消除径向分量
+        const velocityRadial = velocityX * nx + velocityY * ny;
+        
+        // 从速度中减去径向分量
+        velocityX = velocityX - nx * velocityRadial;
+        velocityY = velocityY - ny * velocityRadial;
+        
+        // 重新归一化到原来的速度大小
+        const newSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+        if (newSpeed > 0.001) {
+          velocityX = velocityX / newSpeed * TANGENTIAL_SPEED;
+          velocityY = velocityY / newSpeed * TANGENTIAL_SPEED;
+        } else {
+          // 特殊情况处理：如果速度几乎为0，赋予一个切向速度
+          velocityX = -ny * TANGENTIAL_SPEED;
+          velocityY = nx * TANGENTIAL_SPEED;
+        }
+        
+        // 标记修正点
+        markCorrectionPoint(x, y);
+        correctionCount++;
+        correctionDisplay.textContent = correctionCount;
+      }
+      
+      timeAccum -= dt_physics;
+    }
+    
+    // 更新显示
+    neptune.style.left = x + 'px';
+    neptune.style.top = y + 'px';
+    
+    // 绘制轨迹
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    
+    requestAnimationFrame(frame);
+  }
+  
+  // 滑块控制
+  dtSlider.addEventListener('input', function() {
+    dt_physics = this.value / 1000; // 转换为秒
+    dtValue.textContent = this.value;
+  });
+  
+  speedSlider.addEventListener('input', function() {
+    TANGENTIAL_SPEED = parseFloat(this.value);
+    speedValue.textContent = this.value;
+    
+    // 调整当前速度大小，保持方向
+    const currentSpeed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+    if (currentSpeed > 0) {
+      velocityX = velocityX / currentSpeed * TANGENTIAL_SPEED;
+      velocityY = velocityY / currentSpeed * TANGENTIAL_SPEED;
+    }
+  });
+  
+  // 开始动画
+  requestAnimationFrame(frame);
+</script>
+
+</body>
+</html>
