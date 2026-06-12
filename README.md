@@ -1,81 +1,74 @@
-# Unified Cosmic Mechanics Evolution Theory
-## A Complete, Self-Consistent, Fundamental Framework for Physics
+**# Unified Cosmic Mechanics Evolution Theory**
+**## A Complete, Self-Consistent, Fundamental Framework for Physics**
 
 This paper series is part of the **"Unified Cosmic Mechanics Evolution Theory"** framework, which systematically reconstructs the foundations of physics from first principles.
 
 The new theoretical system achieves systematic natural compatibility with conventional theories from three essential aspects: 
 **"logical self-consistency, mathematical formalization, and consistency with all physical experiments and natural phenomena"**.
 
-**Introduction:**
+**引言：**
 
-**Current Challenges:**
+**当下问题：**
+长期以来，我们为了对物理世界的深入理解和应用，建立了广泛的物理学科，并在数学预测上极其精准，在工程应用上极为有效，但不可忽视存在以下较弱的关联：
 
-For a long time, in our pursuit of a deeper understanding and application of the physical world, we have established an extensive array of physical disciplines. These have achieved remarkable precision in mathematical predictions and proven highly effective in engineering applications. However, it is crucial not to overlook the following emerging vulnerabilities:
+1. **物理描述越来越弱：** 算符、概率波、矩阵、纤维丛、时空弯曲、暗能量、暗物质等概念日益抽象，领域扩展越来越分化，缺乏统一的可观测、可演化、可实体化的物理描述。
 
-1. **Diminishing physical intuition in descriptions:** Concepts such as operators, probability waves, matrices, fiber bundles, spacetime curvature, dark energy, and dark matter are becoming increasingly abstract. There is a growing lack of a unified physical description that is observable, evolvable, and capable of materialization.
+2. **领域间兼容性弱：** 能量与动量，时空背景与实体演化，场与粒子，信息传递、感知机制与实体演化等相关领域逻辑关联尚未厘清，存在主动消除裂痕。
 
-2. **Weak compatibility across domains:** The logical connections between energy and momentum, spacetime backgrounds and entity evolution, fields and particles, as well as information transmission, perception mechanisms, and entity evolution, remain unresolved. There is a tendency to artificially bridge these gaps rather than fundamentally reconciling them.
+3. **量纲关系缺乏微观起源：** 时间、空间、质量、能量、动量、力、信息、熵等基本量纲之间的相互关系，缺少底层联系、统一描述。
 
-3. **Lack of microscopic origins for dimensional relationships:** The interrelationships among fundamental dimensions—such as time, space, mass, energy, momentum, force, information, and entropy—lack a foundational connection and a unified descriptive framework.
+4. **完整物理机制未健全：** 缺少从一个粒子从生成、运动起源、因果交互、现象涌现、量纲关系、如何守恒、宏观观测，微观到宏观完整过程所有机制链条完整描述。
 
-4. **Incomplete physical mechanisms:** There is an absence of a comprehensive mechanistic chain describing the complete process of a particle, from its generation, origin of motion, causal interactions, and phenomenon emergence, to dimensional relationships, conservation laws, and macroscopic observations.
+**理论任务：**
+本理论不讨论宇宙系统的起源问题，而聚焦于构建 **「广义关系状态演化系统」** 的核心要素，并进一步从中推导质量、动量、时间、空间、光速、动能、能量、力及洛伦兹因子等基本物理量及其动力学关系的涌现机制，并验证宇宙系统内的动力学演化关系。本框架旨找到当下物理缺失的方向、物理本质，尽量为缺失提供底层统一的弥补形式，并为持续研究提供统一思路方向和给出一些预测。
 
-**Theoretical Tasks:**
+**理论方法：**
+本文主要以标准三维正交惯性关系状态演化系统作为默认参照视角，用于保证推导过程与经典物理结构的可对照性与可验证性。同时，本文所构建的逻辑体系兼容更一般的**广义关系状态演化系统**，从而使相关结论不仅适用于物理宇宙系统，也可推广至其他具备状态表征、关系交互与演化规则的系统。并通过本理论方式从**逻辑、数学、现有实验、传统理论**四个方面进行兼容验证。
 
-This theory does not address the origin of the cosmic system; rather, it focuses on constructing the core elements of the **"Generalized Relational State Evolution System."** Based on this foundation, it further deduces the emergence mechanisms of fundamental physical quantities and their dynamical relationships—including mass, momentum, time, space, the speed of light, kinetic energy, energy, force, and the Lorentz factor—and validates the dynamical evolution relationships within the cosmic system. The ultimate goal of this framework is to identify the missing directions and the true physical essence in contemporary physics, providing a fundamentally unified form of compensation for these gaps. Furthermore, it aims to offer a unified conceptual direction for ongoing research and present specific theoretical predictions.
+**立场说明：**
+本框架**不否定**任何一位科学前辈的伟大理论贡献、实验成果、数学形式与思想价值，并对本文所参考和借鉴的理论工作及其作者，表示衷心感谢。但会从本演化论视角，对部分理论进行起源解构与适用范围进行重新审视与适当修正。广义相对论、量子力学、量子场论在各自适用范围内已被观测反复验证，其数学形式的有效性毋庸置疑。本框架采用**底层动力学视角**：在兼容现有科学范式、逻辑与数学的基础上，从底层推导物质在广义惯性状态演化系统中的行为——包括状态如何表征、如何位移、因果关系如何建立、物质之间如何感知与交互、需获得对方什么信息、涌现出什么结果、直接的因果影响是什么。本框架在兼容传统场论等有效描述体系的基础上，通过**底层关系演化机制**对其进行解释性还原，并在满足理论、数学与实验一致性的前提下引入必要性建模假设。
 
-**Theoretical Methodology:**
+**表达说明：**
+量纲表达：本框架只推导广义关系状态演化系统与宇宙演化关系的底层逻辑与统计依赖，不直接展示传统量纲单位（如米、秒、千克、牛顿、焦耳等），也主张不将不同观测视角下的统计结果（如「平方秒」）作为基础量纲单位。物理描述：本框架中一切物理描述，如演化规则等均是从广义关系状态演化系统视角方便理解所陈述，即类似于宇宙系统，一切物理现象在兼容现象观测、传统理论基础上均采用**状态演化关系**进行描述，即**状态演化 → 现象观测 → 传统兼容**三个维度进行描述，同时本理论简称为**演化论**。
 
-This paper primarily adopts the **"Standard Three-Dimensional Orthogonal Inertial Relational State Evolution System"** as the default reference perspective. This ensures that the derivation process remains comparable to and verifiable against the structures of classical physics. Simultaneously, the logical framework constructed herein is compatible with the more general **"Generalized Relational State Evolution System."** This universality allows the derived conclusions to apply not only to the physical cosmic system but also to be generalized to any other system possessing state representations, relational interactions, and evolution rules. The compatibility of this theory is rigorously validated across four dimensions: **logical consistency, mathematical rigor, existing experimental data, and established traditional theories.**
+**框架说明：**
 
-**Statement of Position:**
+本理论采用演化关系视角重新审视物理系统的基本运作方式，因此与传统理论在概念体系和数学表达上存在根本性差异，两者只能保持兼容，无法直接逐项对应或照搬引用。基于传统理论背景的研究者在初次接触本框架时，难免会对部分结论和推导过程产生疑虑。为此，本人声明如下：
 
-The proposed framework remains compatible with conventional field theory and other effective descriptive systems while reinterpreting them through underlying relational evolution mechanisms, introducing necessary modeling hypotheses consistent with theoretical, mathematical and experimental constraints.
+### **框架说明：**
 
-**Notes on Expression:**
+1. **相对论：**  相对论效应本质上依赖于瞬时全局交互——宏观全局刷新频率c，因此存在交互频率上限，因宇宙粒子微观物质波演化频率恒为c，宏观运动为矢量叠加为v，涌现时间和空间双维度：微观为cc、宏观为vv， 涌现出“时空状态积分” cc。自然涌现洛伦兹因子和“质能方程”，但需将质能方程的“直接力作用”进行解耦，还原为动量为力的作用；因此相对论本身依赖于瞬时交互和宏观周期c来涌现洛伦兹因子，微观守恒演化能力为c涌现“质能方程”。
 
-For dimensional representation, this framework exclusively deduces the underlying logic and statistical dependence between the generalized relational state evolution system and cosmic evolution, without adopting conventional dimensional units such as meter, second, kilogram, Newton and Joule; it does not accept the treatment of statistical outcomes from specific observational viewpoints (e.g., square second) as fundamental dimensional units. In physical description, all evolutionary rules and other physical depictions in this framework are formulated for intuitive interpretation from the generalized relational state evolution system. Namely, all physical phenomena are described via state evolution relations while conforming to observational results and conventional theories following a three-tier logic: **state evolution → observational phenomenon → conventional theory compatibility**. The proposed theory is abbreviated as **Evolution Theory** hereafter.
+2. **经典力学：** 经典表达式 1/2 mv^2 与 mgh 描述的是特殊条件下（径向、持续积分）的统计结果。积分过程本质上是引入了「时间渠道」，将动量在时间上的累积记账为「能量」。这好比无论水呈何种形态，其本质都是水分子。同理，积分结果（力或能量）与时间渠道无关，最终仍然应还原为**动量为力的作用**。
 
-**Framework Explanation:**
+3. **量子力学：** 量子现象源于底层实体通过**多对多关系**建立的粒子结构。守恒的状态表征能力与驱动能力 c 决定了全局瞬时交互。粒子的动态半径（波长）是定向比例 s 的投影，自然消除了传统的不确定性与「波粒二象性」悖论。通过定向比例 s 的计算，可以统一适用于所有微观合速场合，而最小作用原理、纤维丛、质能转换、矩阵、旋量等量子力学工具，均可视为该底层动力学在宏观层面的统计涌现。
 
-This theory re-examines the fundamental operating principles of physical systems from the perspective of evolutionary relations. Consequently, it differs fundamentally from traditional theories in both conceptual framework and mathematical formulation. The two approaches can only maintain compatibility, but cannot be directly mapped or cited item by item. Researchers with a background in traditional theories may inevitably harbor doubts about some of the conclusions and derivations upon their initial encounter with this framework. To this end, the following clarifications are provided:
+4. **天体力学（暗物质与暗能量）：**
+   - **暗物质：** 暗物质假设起源于将太阳系的单极引力效应错误地推广到了大型网状星系。引力相互作用的基本原理是：一切仅以辐射状向中心衰减。因此，在大型星系中，每个天体均以自身为中心，旋臂内的天体通过相互的动量偏差卸载，实现近似同相位的协同演化。由于不存在多余的积分空间，无法涌现出「甩」出去的力（即暗物质所假定的额外引力效应）。
+   - **暗能量：** 暗能量的假设，涌现于「为何向内的引力会转变为向外的膨胀力」这一困惑。其本质源于宇宙物质在超大尺度上的均匀分布，形成了**网状协同关系**。这类似于一群人围成一圈手拉手：无论所有人是向外推还是向内拉，系统都会达成整体平衡。对于圈上的任意一个人（局域视角），其感受到的是单向的拉力或推力；但从大尺度（全局视角）观察，其他人对他呈现出相反的作用。因此，暗能量与暗物质在观测数据上是等效的，它们并非独立实体，而是宇宙大尺度网状引力协同演化的统计投影。
 
-1. **Relativity:** Relativistic effects essentially depend on **instantaneous global interactions** — the macroscopic global refresh frequency \(c\), hence there exists an upper limit on the interaction frequency. Since the evolutionary frequency of microscopic matter waves of cosmic particles is constantly \(c\), macroscopic motion emerges as a vector superposition \(v\), giving rise to both temporal and spatial dimensions: \(c^2\) at the microscopic level and \(v^2\) at the macroscopic level, thereby giving rise to the **"spacetime state integral"** \(c^2\). The Lorentz factor and the **"mass-energy equivalence"** emerge naturally, but the **"direct action of forces"** in the mass-energy equation must be decoupled and reduced to **momentum as the action of force**. Thus, relativity itself relies on instantaneous interactions and the macroscopic periodicity \(c\) to give rise to the Lorentz factor, while the microscopic conserved evolutionary capacity \(c\) gives rise to the mass-energy equation. **Instantaneous interaction is long-range force interaction occurring instantaneously, which is a distinct concept from causality arising from spatial motion.**
+本框架的核心机制——包括演化的必要条件、量纲的涌现关系、动力学的因果影响以及各类观测效应的微观起源——均可通过数字参数化模拟进行具体展示与验证，也欢迎有相关能力的学者尝试验证。
 
-2. **Classical Mechanics:** The classical expressions \(\frac{1}{2}mv^2\) and \(mgh\) describe statistical results under special conditions (radial, continuous integration). The integration process essentially introduces a **"time channel"**, which accumulates momentum over time and records it as **"energy"**. This is akin to water taking various forms while its essence remains H₂O molecules. Similarly, the integrated result (force or energy) is independent of the time channel and should ultimately still be reduced to **momentum as the action of force**.
+**阅读建议：**
 
-3. **Quantum Mechanics:** Quantum phenomena arise from particle structures established through **many-to-many relationships** among underlying entities. The conserved state characterization capability and driving capability \(c\) determine instantaneous global interactions. The dynamic radius (wavelength) of a particle is the projection of the directional ratio \(s\), naturally eliminating the traditional uncertainty and the **"wave-particle duality"** paradox. Through calculations involving the directional ratio \(s\), a unified treatment applicable to all microscopic composite velocity scenarios is achieved. Tools of quantum mechanics, such as the principle of least action, fiber bundles, mass-energy conversion, matrices, and spinors, can all be viewed as **statistical emergences of this underlying dynamics at the macroscopic level**.
+本理论的递进逻辑可概括为：**系统类型与静态构建 → 关系演化 → 自由维度与演化运动形式 → 复杂关系建立要求（标准量子化） → 参考宇宙系统**。按此逻辑推导宇宙现象。具体展开如下：
 
-The core mechanisms of this framework — including the necessary conditions for evolution, the emergent relationships of dimensional quantities, the causal influences of dynamics, and the microscopic origins of various observational effects — can all be concretely demonstrated and verified through **digital parametric simulations**. By constructing corresponding computational models, simulations can be run based on both this framework and traditional theories separately, and the output results (such as orbital morphology, momentum distribution, interference patterns, etc.) can be systematically compared — including comparisons of complexity or even the feasibility of simulation itself — to intuitively demonstrate the correctness and compatibility of this framework.
+- **第一层——静态表征与独立演化（系统基础）：** 理解演化系统可以有多类形式存在，建立状态表征规则与独立演化机制。此层是后续所有层次的前提，如RGB三原色独立演化、棋盘格子状态更新、有序式独立状态转移均属此类。
 
-Moreover, while maintaining the self-consistency of its underlying logic, this framework has already covered all major domains of physics (classical mechanics, relativity, quantum mechanics, celestial mechanics, etc.), and provides compatible mathematical formulations and testable quantitative predictions for each. Any further discussion or challenge to this theory is welcomed to be based on **simulation verification and mathematical derivation**, rather than merely on subjective judgments rooted in traditional conceptual systems.
+- **第二层——关系演化（因果交互建立）：** 在第一层的基础上，各演化载体通过感知与响应机制建立因果交互关系，形成相互约束的底层基础。
 
-**Reading Guide:**
+- **第三层——惯性演化（自由维度与演化延续）：** 在关系演化的基础上引入自由维度与状态延续规则，演化载体沿自由维度均匀延续状态，惯性运动与经典力学现象在此层涌现，惯性的对应自由维度包括单步、棋盘跳跃式。
 
-The progressive logic of the present theory is summarized as follows: **system classification and static construction → relational evolution → free dimension and evolutionary motion modes → prerequisites for complex relation formation (standard quantization) → reference to the cosmic system**, with cosmic physical phenomena deduced sequentially along this logical chain. Detailed elaboration is listed below:
+- **第四层——标准量子化（离散最小分布式演化）：** 在惯性演化的基础上引入最小演化事件、最小状态表征尺度与离散约束，量子现象作为离散约束下的惯性演化统计涌现。
 
-- **Layer 1 -- Static Characterization and Independent Evolution (System Foundation):** Clarify diversified feasible forms of evolution systems and establish rules for state characterization and independent evolution, serving as the prerequisite for all subsequent derivations. Examples include independent evolution of RGB three primary colors, status updating on checkerboard lattices and sequential discrete state transition.
+- **第五层——宇宙系统（现实物理世界）：** 将前四层的规则同时应用于宇宙尺度，从动量单元封装、纠缠内联、感知衰减中推导出相对论效应与天体力学现象。
 
-- **Layer 2 -- Relational Evolution (Causal Interaction Establishment):** Built upon Layer 1, individual evolution carriers establish causal interactions via perception and response mechanisms, laying the underlying foundation for mutually constrained systemic evolution.
+五个层次构成从抽象到具体、从简单到复杂的**单向依赖链条**，后一层在不推翻前一层规则的前提下，通过增加约束条件推导出更丰富的现象。即以系统必要性推导时空与量纲如何涌现，动力学关系如何建立与现象涌现，而非提前预构建各类力、能量、时空、参考系、关系群、弦等实体或概念。
 
-- **Layer 3 -- Inertial Evolution (Free Dimension and State Persistence):** Free dimensions and state persistence rules are introduced atop relational evolution. Evolution carriers sustain uniform state expansion along free dimensions, from which inertial motion and classical mechanical phenomena emerge. Relevant inertial free dimension types include single-step progression and checkerboard jump-style displacement.
-
-- **Layer 4 -- Standard Quantization (Discrete Minimum Distributed Evolution):** Minimum evolutionary events, baseline state characterization scales and discrete constraints are added onto inertial evolution. Quantum phenomena statistically emerge as inertial evolution confined by discrete restrictions.
-
-- **Layer 5 -- Cosmic System (Real-World Physical Universe):** Rules from the preceding four layers are applied to cosmic scale. Relativistic effects and celestial mechanical phenomena are deduced starting from momentum unit encapsulation, internal coupling entanglement and perceptual attenuation.
-
-The five layers constitute an **irreversible progressive chain** ranging from abstract abstraction to concrete reality and from simplicity to complexity. Every upper-layer rule remains intact when constructing subsequent layers, and richer physical phenomena are derived via supplementary restrictive conditions. Instead of predefining pre-existing entities or concepts including forces, energy, spacetime, reference frames, relational groups and strings, spacetime, dimensional emergence and dynamic relations are deduced from **systemic necessity** alongside corresponding physical phenomena.
-
-**Content Declaration:**
-
-No single subfield of the proposed theory can be separated for independent elaboration due to mutual interdependence across all modules, resulting in an extensive overall manuscript. The established Evolution Theory spans classical mechanics, relativity, quantum mechanics and celestial mechanics, matching their inherent logical and mathematical formulations with an intricate reasoning chain and abundant customized symbolic correlations. Restricted by proofreading resources and manuscript length, occasional imprecise wording, inconsistent symbol usage, abbreviated derivation steps and incomplete numerical verification details may exist within the text. Such minor imperfections **do not compromise the validity of core axioms, primary logical threads and key conclusions**; revisions and optimizations will be supplemented in subsequent versions, and academic corrections from peer scholars are welcomed.
-
-All contents include complete mathematical verification, numerical simulation validation, and observational consistency checks.
+**内容声明：**
+本理论所有单独领域无法单独抽离表达，领域间相互依赖，因此理论篇幅较大。所构建的演化论框架横跨经典力学、相对论、量子力学与天体力学等多个领域，兼容其逻辑形式与数学形式，逻辑链条复杂，数学表达涉及大量自定义符号与关联关系。受限于校对精力与篇幅，文中可能存在个别表述欠精准、符号使用不一致、推导步骤略写或数值验证细节未充分展开之处。此类问题不影响本文核心公设、逻辑主线与主要结论的有效性，作者将在后续版本中持续修订完善。欢迎同行学者指正。
 
 ---
-
-## **Important Declaration**
-**Date of Declaration: April 30, 2026**
 
 ## **License & Copyright Statement**
 **Effective Date: April 30, 2026**
